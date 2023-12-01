@@ -6,12 +6,18 @@ import (
 
 func BenchmarkDay1(b *testing.B) {
 	for n := 0; n < b.N; n++ {
-		Solve1()
+		r := Solve1()
+		if r != 55447 {
+			b.Errorf("Got %d, expected 55447", r)
+		}
 	}
 }
 
 func BenchmarkDay2(b *testing.B) {
 	for n := 0; n < b.N; n++ {
-		Solve2()
+		r := Solve2()
+		if r != 54706 {
+			b.Errorf("Got %d, expected 54706", r)
+		}
 	}
 }

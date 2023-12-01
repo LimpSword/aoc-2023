@@ -8,7 +8,7 @@ import (
 )
 
 func Solve1() int {
-	bytes, _ := os.ReadFile("day1/input.txt")
+	bytes, _ := os.ReadFile("input.txt")
 	input := string(bytes)
 
 	// Part 1
@@ -38,7 +38,7 @@ func Solve1() int {
 }
 
 func Solve2() int {
-	bytes, _ := os.ReadFile("day1/input.txt")
+	bytes, _ := os.ReadFile("input.txt")
 	input := string(bytes)
 
 	// Part 1

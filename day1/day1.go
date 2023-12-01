@@ -1,7 +1,6 @@
 package main
 
 import (
-	"math"
 	"os"
 	"strconv"
 	"strings"
@@ -62,21 +61,21 @@ func Solve2() int {
 		first := -1
 		last := -1
 		for i := 0; i < len(line); i++ {
-			for j := i; j < len(line); j++ {
-				if n, ok := numbers[line[i:j]]; ok {
-					if first == -1 {
-						first = n
-						i = j - 1
-					} else {
-						last = n
-						i = j - 1
-					}
-				} else if math.Abs(float64(i-j)) == 0 {
-					if unicode.IsDigit(rune(line[i])) {
+			if unicode.IsDigit(rune(line[i])) {
+				if first == -1 {
+					first = int(line[i] - '0')
+				} else {
+					last = int(line[i] - '0')
+				}
+			} else {
+				for j := i; j < min(len(line), i+6); j++ {
+					if n, ok := numbers[line[i:j+1]]; ok {
 						if first == -1 {
-							first = int(line[i] - '0')
+							first = n
+							i = j - 1
 						} else {
-							last = int(line[i] - '0')
+							last = n
+							i = j - 1
 						}
 					}
 				}

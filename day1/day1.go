@@ -3,14 +3,11 @@ package main
 import (
 	"bufio"
 	bytes2 "bytes"
-	"os"
 	"strings"
 	"unicode"
 )
 
-func Solve1() int {
-	bytes, _ := os.ReadFile("input.txt")
-
+func Solve1(bytes []byte) int {
 	buffer := bufio.NewReader(bytes2.NewBuffer(bytes))
 
 	// Part 1
@@ -39,8 +36,7 @@ func Solve1() int {
 	return sum
 }
 
-func Solve2() int {
-	bytes, _ := os.ReadFile("input.txt")
+func Solve2(bytes []byte) int {
 	input := string(bytes)
 
 	// Part 1
@@ -91,9 +87,7 @@ func Solve2() int {
 	return sum
 }
 
-func Solve2Mad() int {
-	bytes, _ := os.ReadFile("input.txt")
-
+func Solve2Mad(bytes []byte) int {
 	// Part 2
 	buffer := bufio.NewReader(bytes2.NewBuffer(bytes))
 	sum := 0

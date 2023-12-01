@@ -2,7 +2,6 @@ package main
 
 import (
 	"os"
-	"strconv"
 	"strings"
 	"unicode"
 )
@@ -20,18 +19,14 @@ func Solve1() int {
 		for _, c := range line {
 			if first == -1 && unicode.IsDigit(c) {
 				first = int(c - '0')
-			} else {
-				if unicode.IsDigit(c) {
-					last = int(c - '0')
-				}
+			} else if unicode.IsDigit(c) {
+				last = int(c - '0')
 			}
 		}
 		if last == -1 {
-			a, _ := strconv.Atoi(strconv.Itoa(first) + strconv.Itoa(first))
-			sum += a
+			sum += 10*first + first
 		} else {
-			a, _ := strconv.Atoi(strconv.Itoa(first) + strconv.Itoa(last))
-			sum += a
+			sum += 10*first + last
 		}
 	}
 	return sum
@@ -72,21 +67,19 @@ func Solve2() int {
 					if n, ok := numbers[line[i:j+1]]; ok {
 						if first == -1 {
 							first = n
-							i = j - 1
+							i = j
 						} else {
 							last = n
-							i = j - 1
+							i = j
 						}
 					}
 				}
 			}
 		}
 		if last == -1 {
-			a, _ := strconv.Atoi(strconv.Itoa(first) + strconv.Itoa(first))
-			sum += a
+			sum += 10*first + first
 		} else {
-			a, _ := strconv.Atoi(strconv.Itoa(first) + strconv.Itoa(last))
-			sum += a
+			sum += 10*first + last
 		}
 	}
 	return sum

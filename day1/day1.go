@@ -14,20 +14,20 @@ func Solve1() int {
 	lines := strings.Split(input, "\n")
 	sum := 0
 	for _, line := range lines {
-		first := -1
-		last := -1
-		for _, c := range line {
-			if first == -1 && unicode.IsDigit(c) {
-				first = int(c - '0')
-			} else if unicode.IsDigit(c) {
-				last = int(c - '0')
+		first, last := -1, -1
+		for k := range line {
+			if unicode.IsDigit(rune(line[k])) {
+				first = int(line[k] - '0')
+				break
 			}
 		}
-		if last == -1 {
-			sum += 10*first + first
-		} else {
-			sum += 10*first + last
+		for k := len(line) - 1; k >= 0; k-- {
+			if unicode.IsDigit(rune(line[k])) {
+				last = int(line[k] - '0')
+				break
+			}
 		}
+		sum += 10*first + last
 	}
 	return sum
 }
@@ -53,8 +53,7 @@ func Solve2() int {
 	}
 
 	for _, line := range lines {
-		first := -1
-		last := -1
+		first, last := -1, -1
 		for i := 0; i < len(line); i++ {
 			if unicode.IsDigit(rune(line[i])) {
 				if first == -1 {

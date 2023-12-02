@@ -11,7 +11,7 @@ var input []byte
 
 func main() {
 	t := time.Now()
-	fmt.Println("1: ", Solve1(input))
+	fmt.Println("1: ", Solve1Mad(input))
 	elapsed := time.Since(t)
 	println("Solved Part 1 in", elapsed.Nanoseconds(), "ns")
 

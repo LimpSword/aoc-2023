@@ -46,9 +46,7 @@ func isPartNumber(lines []string, line int, startCol int, column int) bool {
 	for i := max(line-1, 0); i < min(line+2, len(lines)); i++ {
 		for j := max(startCol-1, 0); j < min(column+2, len(lines[0])); j++ {
 			if lines[i][j] != '.' && !unicode.IsDigit(rune(lines[i][j])) {
-				if 0 <= i && i < len(lines) && 0 <= j && j < len(lines[0]) {
-					return true
-				}
+				return true
 			}
 		}
 	}
@@ -59,16 +57,13 @@ func isPartNumber2(gears map[int][]int, number int, lines []string, line int, st
 	found := false
 	for i := max(line-1, 0); i < min(line+2, len(lines)); i++ {
 		for j := max(startCol-1, 0); j < min(column+2, len(lines[0])); j++ {
-			if lines[i][j] != '.' && !unicode.IsDigit(rune(lines[i][j])) {
-				if 0 <= i && i < len(lines) && 0 <= j && j < len(lines[0]) {
-					found = true
-					if lines[i][j] == '*' {
-						if _, ok := gears[cantor(i, j)]; !ok {
-							gears[cantor(i, j)] = make([]int, 0)
-						}
-						gears[cantor(i, j)] = append(gears[cantor(i, j)], number)
-					}
+			if lines[i][j] == '*' {
+				found = true
+				c := cantor(i, j)
+				if _, ok := gears[c]; !ok {
+					gears[cantor(i, j)] = make([]int, 0)
 				}
+				gears[c] = append(gears[c], number)
 			}
 		}
 	}

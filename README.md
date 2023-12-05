@@ -12,3 +12,5 @@ written first).
 |                [day1](day1/day1.go)                 | `0.025 ms` | `0.033 ms` |
 | [day2](day2/day2.go) and [day2mad](day2/day2mad.go) | `0.058 ms` | `0.058 ms` |
 |                [day3](day3/day3.go)                 | `0.063 ms` | `0.114 ms` |
+|                [day4](day4/day4.go)                 | `0.36 ms`  | `0.38 ms`  |
+|                [day5](day5/day5.go)                 | `0.036 ms` | `0.060 ms` |

@@ -15,3 +15,4 @@ written first).
 |                [day4](day4/day4.go)                 |  `0.36 ms`   |  `0.38 ms`   |
 |                [day5](day5/day5.go)                 |  `0.036 ms`  |  `0.060 ms`  |
 |                [day6](day6/day6.go)                 | `0.00023 ms` | `0.00012 ms` |
+|                [day7](day7/day7.go)                 |  `0.59 ms`   |  `0.67 ms`   |

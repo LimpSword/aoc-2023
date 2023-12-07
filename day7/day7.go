@@ -1,6 +1,7 @@
 package main
 
 import (
+	"slices"
 	"strconv"
 	"strings"
 	"unicode"
@@ -70,23 +71,25 @@ func Solve2(bytes []byte) int {
 
 func orderFromType(hands []string) []int {
 	cardByScore = make(map[int]string)
-	sortedHands := make([]int, 0)
-	for _, hand := range hands {
-		sortedHands = append(sortedHands, getScore(hand))
-		cardByScore[getScore(hand)] = hand
+	sortedHands := make([]int, len(hands))
+	for k, hand := range hands {
+		score := getScore(hand)
+		sortedHands[k] = score
+		cardByScore[score] = hand
 	}
-	sortedHands = InsertionSort(sortedHands)
+	slices.Sort(sortedHands)
 	return sortedHands
 }
 
 func orderFromType2(hands []string) []int {
 	cardByScore = make(map[int]string)
-	sortedHands := make([]int, 0)
-	for _, hand := range hands {
-		sortedHands = append(sortedHands, getScore2(hand))
-		cardByScore[getScore2(hand)] = hand
+	sortedHands := make([]int, len(hands))
+	for k, hand := range hands {
+		score := getScore2(hand)
+		sortedHands[k] = score
+		cardByScore[score] = hand
 	}
-	sortedHands = InsertionSort(sortedHands)
+	slices.Sort(sortedHands)
 	return sortedHands
 }
 
@@ -234,13 +237,4 @@ func Unique(slice []string) []string {
 		uniqSlice = append(uniqSlice, v)
 	}
 	return uniqSlice
-}
-
-func InsertionSort(arr []int) []int {
-	for i := 0; i < len(arr); i++ {
-		for j := i; j > 0 && arr[j-1] > arr[j]; j-- {
-			arr[j], arr[j-1] = arr[j-1], arr[j]
-		}
-	}
-	return arr
 }

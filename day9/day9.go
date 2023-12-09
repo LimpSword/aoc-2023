@@ -1,7 +1,6 @@
 package main
 
 import (
-	"slices"
 	"strconv"
 	"strings"
 )
@@ -25,7 +24,7 @@ func Solve1(bytes []byte) int {
 	}
 
 	for k, v := range successive {
-		for !slices.Equal(slices.Compact(slices.Clone(v[len(v)-1])), []int{0}) {
+		for !isFullZero(v[len(v)-1]) {
 			last := v[len(v)-1]
 			next := make([]int, len(last)-1)
 			for i := 0; i < len(last)-1; i++ {
@@ -37,11 +36,11 @@ func Solve1(bytes []byte) int {
 	}
 
 	for _, v := range successive {
-		v[len(v)-1] = append(v[len(v)-1], 0)
+		r := 0
 		for i := len(v) - 2; i >= 0; i-- {
-			v[i] = append(v[i], v[i+1][len(v[i+1])-1]+v[i][len(v[i])-1])
+			r = v[i][len(v[i])-1] + r
 		}
-		sum += v[0][len(v[0])-1]
+		sum += r
 	}
 
 	return sum
@@ -66,7 +65,7 @@ func Solve2(bytes []byte) int {
 	}
 
 	for k, v := range successive {
-		for !slices.Equal(slices.Compact(slices.Clone(v[len(v)-1])), []int{0}) {
+		for !isFullZero(v[len(v)-1]) {
 			last := v[len(v)-1]
 			next := make([]int, len(last)-1)
 			for i := 0; i < len(last)-1; i++ {
@@ -78,11 +77,21 @@ func Solve2(bytes []byte) int {
 	}
 
 	for _, v := range successive {
+		r := 0
 		for i := len(v) - 2; i >= 0; i-- {
-			v[i] = append([]int{-v[i+1][0] + v[i][0]}, v[i]...)
+			r = v[i][0] - r
 		}
-		sum += v[0][0]
+		sum += r
 	}
 
 	return sum
+}
+
+func isFullZero(slice []int) bool {
+	for _, v := range slice {
+		if v != 0 {
+			return false
+		}
+	}
+	return true
 }

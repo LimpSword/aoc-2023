@@ -1,7 +1,6 @@
 package main
 
 import (
-	"regexp"
 	"strings"
 )
 
@@ -28,11 +27,9 @@ func Solve1(bytes []byte) int {
 				moveOrder = append(moveOrder, string(c))
 			}
 		} else {
-			regex := regexp.MustCompile("([A-Z]{3}) = \\(([A-Z]{3}), ([A-Z]{3})\\)")
-			matches := regex.FindStringSubmatch(line)
-			moveFrom := matches[1]
-			moveToLeft := matches[2]
-			moveToRight := matches[3]
+			var moveFrom = line[0:3]
+			var moveToLeft = line[7:10]
+			var moveToRight = line[12:15]
 
 			goTo[moveFrom] = Next{moveToLeft, moveToRight}
 		}
@@ -73,11 +70,9 @@ func Solve2(bytes []byte) int {
 				moveOrder = append(moveOrder, string(c))
 			}
 		} else {
-			regex := regexp.MustCompile("([A-Z1-9]{3}) = \\(([A-Z1-9]{3}), ([A-Z1-9]{3})\\)")
-			matches := regex.FindStringSubmatch(line)
-			moveFrom := matches[1]
-			moveToLeft := matches[2]
-			moveToRight := matches[3]
+			var moveFrom = line[0:3]
+			var moveToLeft = line[7:10]
+			var moveToRight = line[12:15]
 
 			goTo[moveFrom] = Next{moveToLeft, moveToRight}
 		}

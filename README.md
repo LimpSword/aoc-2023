@@ -18,3 +18,9 @@ written first).
 |                [day7](day7/day7.go)                 |  `0.59 ms`   |  `0.67 ms`   |
 |                [day8](day8/day8.go)                 |  `0.36 ms`   |  `4.71 ms`   |
 |                [day9](day9/day9.go)                 |  `0.257 ms`  |  `0.242 ms`  |
+|               [day10](day10/day10.go)               |  `1.94 ms`   |   `3.9 ms`   |
+|               [day11](day11/day11.go)               |  `24.9 ms`   |  `26.8 ms`   |
+|               [day12](day12/day12.go)               |  `0.30 ms`   |  `0.99 ms`   |
+|               [day13](day13/day13.go)               |  `0.083 ms`  |  `0.092 ms`  |
+|               [day14](day14/day14.go)               |  `0.011 ms`  |              |
+|               [day15](day15/day15.go)               |  `0.083 ms`  |  `0.766 ms`  |
